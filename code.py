@@ -124,6 +124,33 @@ for i in range(0,200)
         tb = tb + 1
     if test_y1[i] == 1 and pred[i] != test_y1[i]:
         hea = hea +1
+print(tb)
+print(hea)
+print('Sensitivity', (rtb-tb)/rtb)
+print('Specifity', (rhea-hea)/rhea)
+a = confusion_matrix(test_y1, pred)
+print("recall:",recall_score(test_y1, pred, average='macro'))
+print("precision:", precision_score(test_y1, pred, average='weighted'))
+print("F1:",f1_score(test_y1, pred, average='macro'))
+#from sklearn.metrics import roc_curve, auc
+#import numpy as np
+#y_test = np.array([1,1,0,1,1,1,0,0,1,0,1,0,1,0,0,0,1,0,1,0])
+# y_score = np.array([0.9,0.8,0.7,0.6,0.55,0.54,0.53,0.52,0.51,0.505,0.4,0.39,0.38,0.37,0.36,0.35,0.34,0.33,0.3,0.1])
+# ##
+fpr,tpr,thre = roc_curve(test_y1, pred)
+auc = auc(fpr, tpr)
 
+plt.plot(fpr,tpr,color = 'darkred',label = 'roc area:(%0.2f)'%auc)
+plt.plot([0,1],[0,1], linestyle = '--')
+plt.xlim([0,1])
+plt.ylim([0,1])
+plt.xlabel('fpr')
+plt.ylabel('tpr')
+plt.title('roc_curve')
+plt.legend(loc = 'lower right')
+plt.savefig('1.jpg',dpi=800)
+plt.show()
+
+                            
 
 
