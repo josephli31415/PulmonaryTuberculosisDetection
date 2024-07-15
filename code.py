@@ -82,3 +82,13 @@ model1.summary()
 model1.compile(optimizer=opts, loss=loss, metrics=['accuracy'])
 divide_rate = 0.8
 divide_num = round(len(data_x)*divide_rate)
+
+num = 2000
+for i in range(num):
+    x = random.randint(0, len(data_x)-1)
+    y = random.randint(0, len(data_x)-1)
+    data_x[x], data_x[y] = data_x[y], data_x[x]
+    data[x], data[y] = data[y], data[x]
+    label_y[x], label_y[y] = label_y[y], label_y[x]
+train_x1 = data_x[:divide_num]
+
