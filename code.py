@@ -91,4 +91,39 @@ for i in range(num):
     data[x], data[y] = data[y], data[x]
     label_y[x], label_y[y] = label_y[y], label_y[x]
 train_x1 = data_x[:divide_num]
+train_y1 = label_y[:divide_num]
+train_x2 = data[:divide_num]
+test_x1 = data_x[divide_num:]
+test_y1 = label_y[divide_num:]
+test_x2 = data[divide_num:]
+
+history1 = model1.fit([train_x1, train_x2], train_y1,epochs=30, batch_size=32)
+# history2 = model2.fit(train_x1, train_y1, epochs=100, batch_size=32)
+# history = model.fit([train_x1, train_x2], train_y1,epochs=30, batch_size=32)
+
+
+pre = model1.evaluate([test_X1, test_x2], test_y1)
+print('test_loss:', pre[0], '-test_acc:', pre[1])
+
+rtb = 0
+rhea = 0
+for i in range(0,200):
+    if test_y1[i] == 0:
+        rtb = rtb + 1
+    else:
+        rhea = rhea + 1
+print(rtb)
+print(rhea)
+tb = 0
+hea = 0
+pred = model1.predict([test_x1, test_x2], test_y1)
+pred = np.round(pred)
+# print(pred)
+for i in range(0,200)
+    if test_y1[i] == 0 and pred[i] != test_y1[i]:
+        tb = tb + 1
+    if test_y1[i] == 1 and pred[i] != test_y1[i]:
+        hea = hea +1
+
+
 
