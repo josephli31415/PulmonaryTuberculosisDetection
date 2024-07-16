@@ -15,4 +15,11 @@ def create_spectrogram(file_name, output_image):
   plt.savefig(output_image, bbox_inches='tight', pad_inches=0)
   plt.close()
   img = Image.open(output_image).convert("RGB")
+  img = img.resize((256,256), Image.ANTIALIAS)
+  img.save(output_image)
 
+wav_dir = 'path/to/your/wave/files' #shaheem u do this bit
+spectrogram_dir = 'path/to/save/spectrograms' #also do this
+os.makedirs(spectrogram_dir, exist_ok=True)
+
+wav_files = [f for f in os.listdir(wav_dir) if f.endswith('.wav')
