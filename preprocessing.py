@@ -21,11 +21,11 @@ def create_spectrogram(file_name, output_image):
 
 # Paths
 wav_dir = "/Users/sashwathselvakumar/Documents/dataset/Cough sounds in patients with pulmonary tuberculosis"
-spectrogram_dir = "/Users/your_username/Desktop/audio_project/TBSpect"
+spectrogram_dir = "/Users/sashwathselvakumar/Documents/dataset/TBSpect"
 os.makedirs(spectrogram_dir, exist_ok=True)
 
 # Load labels from a CSV file
-labels_df = pd.read_csv('/Users/your_username/Desktop/audio_project/labels.csv')
+labels_df = pd.read_csv('/Users/sashwathselvakumar/Documents/dataset/labels.csv')
 
 # Create a DataFrame for spectrogram images
 spectrogram_labels = []
@@ -44,4 +44,4 @@ for root, dirs, files in os.walk(wav_dir):
 
 # Convert to DataFrame and save to CSV
 spectrogram_labels_df = pd.DataFrame(spectrogram_labels)
-spectrogram_labels_df.to_csv('/Users/your_username/Desktop/audio_project/experiment2.csv', index=False, header=False)
+spectrogram_labels_df.to_csv('/Users/sashwathselvakumar/Documents/dataset/experiment2.csv', index=False, header=False)
